@@ -9,10 +9,11 @@ function openTab(tabName) {
 
 function details() 
 {
-  var x = document.getElementById("studentid").value;
-  var y = document.getElementById("studentname").value;
-  document.getElementById("stu_id").innerHTML = x;
-  document.getElementById("stu_name").innerHTML = y;
+  var stuid = document.getElementById("studentid").value;
+  var stuname = document.getElementById("studentname").value;
+  document.getElementById("stu_id").innerHTML = stuid;
+  document.getElementById("stu_name").innerHTML = stuname;
+  window.location.href = "#questionnaire";
 }
 
 

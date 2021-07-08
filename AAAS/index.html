@@ -27,6 +27,8 @@ body {
 	background-position: right; 
   }
 }
+
+
 	</style>
 </head>
 
@@ -70,7 +72,8 @@ body {
   <div class="w3-container" id="student" style="margin-top:75px; height:100vh;"> 
     <h1 class="w3-xxxlarge w3-text-red"><b>Student Details.
     <hr style="width:50px;border:5px solid red" class="w3-round"></b></h1><br><br><br><br>
-				<form action="#questionnaire" style="width:50%" class="center">
+			<div class="center">
+				<form style="width:100%" class="center">
 					<div class="txt_field">
 						<input type="number" id="studentid" maxlength="10" style="color: black;"required>
 						<span></span>
@@ -81,8 +84,9 @@ body {
 						<span></span>
 						<label>Name</label>
 					</div>
-					<input type="submit" value="Continue" onclick="details()">
 				</form>
+				<input type="submit" value="Continue" onclick="details()">
+			</div>
   </div>
   
  <!-- Questionnaire -->
@@ -1081,7 +1085,7 @@ body {
 			}
 		</style>
 
-		<table width="726" border="0" align="center">
+		<table border="0" align="center">
 		
 			<tr>
 				<td width="100%">
