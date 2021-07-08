@@ -1411,7 +1411,7 @@ function Advice()
 ///////////////////// END EXPERT GOOGLE + ADVISOR ADVICEEEEEE///////////////////////////////////////////
 
 ///////////////////// PRINT CERTAIN AREA///////////////////////////////////////////
-function printPageArea(areaID){
+/*function printPageArea(areaID){
     var printContent = document.getElementById(areaID);
     var WinPrint = window.open('', '', 'width=900,height=650');
     WinPrint.document.write(printContent.innerHTML);
@@ -1419,7 +1419,7 @@ function printPageArea(areaID){
     WinPrint.focus();
     WinPrint.print();
     WinPrint.close();
-}
+}*/
 
 function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;

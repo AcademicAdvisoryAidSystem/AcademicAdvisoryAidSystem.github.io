@@ -28,6 +28,18 @@ body {
   }
 }
 
+  @media print {
+      h1, div, p,td, tr, input, strong {
+        color: black;
+      }
+
+      @media print and (-webkit-min-device-pixel-ratio:0) {
+        h1, div, p,td, tr, input, strong {
+          color: black;
+          -webkit-print-color-adjust: black;
+        }
+      }
+   }
 	</style>
 </head>
 
