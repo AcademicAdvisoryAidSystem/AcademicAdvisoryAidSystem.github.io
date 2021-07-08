@@ -1,0 +1,1343 @@
+<html lang="en">
+
+<head>
+	<title>AAAS</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../AAAS/w3.css">
+	<link rel="stylesheet" href="../AAAS/font.css">
+	<link rel="stylesheet" href="../AAAS/styles.css">
+	<script src="../AAAS/calculation.js"></script>
+	<style>
+
+body {
+  background-image: url('../AAAS/images/banner.png'); 
+	background-attachment: fixed; 
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+/* For screen yang big big: */
+@media only screen and (min-width: 700px) {
+  body { 
+     background-image: url('../AAAS/images/banner.png');
+	background-attachment: fixed; 
+	background-repeat: repeat;
+	background-size: 78% 100%;
+	background-position: right; 
+  }
+}
+	</style>
+</head>
+
+<body >
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Academic<br>Advisory<br>Aid System</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="#student" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Student Details</a> 
+	<a href="#questionnaire" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Questionnaire</a> 
+    <a href="#summary" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Summary</a> 
+    <a href="#pgrade" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Predict Grade</a> 
+    <a href="#expadvice" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Expert Advice</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>AAAS</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px; height:100vh" id="showcase">
+    <h2 class="w3-jumbo"><b>Academic Advisory Aid System</b></h2>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Home.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+    <!-- Services -->
+  <div class="w3-container" id="student" style="margin-top:75px; height:100vh;"> 
+    <h1 class="w3-xxxlarge w3-text-red"><b>Student Details.
+    <hr style="width:50px;border:5px solid red" class="w3-round"></b></h1><br><br><br><br>
+				<form action="#questionnaire" style="width:50%" class="center">
+					<div class="txt_field">
+						<input type="number" id="studentid" maxlength="10" style="color: black;"required>
+						<span></span>
+						<label>Student ID</label>
+					</div>
+					<div class="txt_field">
+						<input type="text" id="studentname" style="color: black;" required>
+						<span></span>
+						<label>Name</label>
+					</div>
+					<input type="submit" value="Continue" onclick="details()">
+				</form>
+  </div>
+  
+ <!-- Questionnaire -->
+  <div class="w3-container" id="questionnaire" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Questionnaire.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <h2>Students required to answer this questionnaire........
+    </p>
+    <p><b>Kindly answer all the questions truthfully</b>:</p>
+  </div>
+
+  <!-- Questionnaire -->
+	<div class="w3-row-padding w3-grayscale" style="text-align:center">
+			<div class="row">
+				<div class="column" onclick="openTab('primary');" style="background:#9c9c9c;">
+					Primary Factor
+				</div>
+
+				<div class="column" onclick="openTab('secondary');" style="background:grey;">
+					Secondary Factor
+				</div>
+			</div>
+
+<!--------------------------------- START PRIMARY QUESTIONN ----------------------------------->		
+			<div id="primary" class="containerTab" style="display:none;background:#9c9c9c">
+				<span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span> <br><br><br>
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Time Management</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Satisfied with the way time used.</td>
+								<td class="qtd">
+									<select id="tm_01" onchange="tot_p1()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Sometimes</option>
+										<option value="4">Often</option>
+										<option value="5">Always</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Do things in order of priority.</td>
+								<td class="qtd">
+									<select id="tm_02" onchange="tot_p1()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Sometimes</option>
+										<option value="4">Often</option>
+										<option value="5">Always</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Spent enough time on academic matters.</td>
+								<td class="qtd">
+									<select id="tm_03" onchange="tot_p1()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Sometimes</option>
+										<option value="4">Often</option>
+										<option value="5">Always</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Able to spend time on each task.</td>
+								<td class="qtd">
+									<select id="tm_04" onchange="tot_p1()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Sometimes</option>
+										<option value="4">Often</option>
+										<option value="5">Always</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Plan time to relax and be with friend in my weekly matters.</td>
+								<td class="qtd">
+									<select id="tm_05" onchange="tot_p1()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Sometimes</option>
+										<option value="4">Often</option>
+										<option value="5">Always</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr"> 
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="tm" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br><br>
+					
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Learning Environment</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Studying atmosphere is enjoyable. </td>
+								<td class="qtd">
+									<select id="le_01" onchange="tot_p1()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Sometimes</option>
+										<option value="4">Often</option>
+										<option value="5">Always</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Latest technology used.</td>
+								<td class="qtd">
+									<select id="le_02" onchange="tot_p1()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Sometimes</option>
+										<option value="4">Often</option>
+										<option value="5">Always</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Teachers often ask for feedback from student.</td>
+								<td class="qtd">
+									<select  id="le_03" onchange="tot_p1()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Sometimes</option>
+										<option value="4">Often</option>
+										<option value="5">Always</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Groupwork often used.</td>
+								<td class="qtd">
+									<select id="le_04" onchange="tot_p1()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Sometimes</option>
+										<option value="4">Often</option>
+										<option value="5">Always</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Assignment is meaningful and helpful.</td>
+								<td class="qtd">
+									<select id="le_05" onchange="tot_p1()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Sometimes</option>
+										<option value="4">Often</option>
+										<option value="5">Always</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="le" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br><br>
+					
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Study Style</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I like to write things down or take notes for visual review.</td>
+								<td class="qtd">
+									<select id="ss_01" onchange="tot_p1()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I try to pay attention to all the features of new material as I learn.</td>
+								<td class="qtd">
+									<select id="ss_02" onchange="tot_p1()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">My notes, handouts, and other school materials are carefully organized.</td>
+								<td class="qtd">
+									<select id="ss_03" onchange="tot_p1()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd"> I can separate out the relevant and important information in a given context even when distracting information is present.</td>
+								<td class="qtd">
+									<select id="ss_04" onchange="tot_p1()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I like to start with rules and theories rather than specific examples.</td>
+								<td class="qtd">
+									<select id="ss_05" onchange="tot_p1()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="ss" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br><br>
+					
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">SPM</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr>
+							<td class="qtd">Bahasa Melayu</td>
+								<td class="qtd">
+									<select id="spm_01" onchange="tot_p1()">
+										<option value="1">≤ E</option>
+										<option value="2">D</option>
+										<option value="3">C – C+</option>
+										<option value="4">B – B+</option>
+										<option value="5">A – A+</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">English</td>
+								<td class="qtd">
+									<select id="spm_02" onchange="tot_p1()">
+										<option value="1">≤ E</option>
+										<option value="2">D</option>
+										<option value="3">C – C+</option>
+										<option value="4">B – B+</option>
+										<option value="5">A – A+</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Mathematics</td>
+								<td class="qtd">
+									<select id="spm_03" onchange="tot_p1()">
+										<option value="1">≤ E</option>
+										<option value="2">D</option>
+										<option value="3">C – C+</option>
+										<option value="4">B – B+</option>
+										<option value="5">A – A+</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Science</td>
+								<td class="qtd">
+									<select id="spm_04" onchange="tot_p1()">
+										<option value="1">≤ E</option>
+										<option value="2">D</option>
+										<option value="3">C – C+</option>
+										<option value="4">B – B+</option>
+										<option value="5">A – A+</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">History</td>
+								<td class="qtd">
+									<select id="spm_05" onchange="tot_p1()">
+										<option value="1">≤ E</option>
+										<option value="2">D</option>
+										<option value="3">C – C+</option>
+										<option value="4">B – B+</option>
+										<option value="5">A – A+</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="spm" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br><br>
+					
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Past semester attendances</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Past semester attendances.</td>
+								<td class="qtd">
+									<select id="att_01" onchange="tot_p1()">
+										<option value="1">≤ 39%</option>
+										<option value="2">40% - 49%</option>
+										<option value="3">50% - 69%</option>
+										<option value="4">70% - 89%</option>
+										<option value="5">≥ 90%</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="att" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br><br>
+					
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Diploma / Foundation / Matriculation / STPM</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Diploma / Foundation / Matriculation / STPM</td>
+								<td class="qtd">
+									<select id="cgpa_01" onchange="tot_p1()">
+										<option value="1">2.50 – 2.99</option>
+										<option value="2">3.00 – 3.29</option>
+										<option value="3">3.30 – 3.49</option>
+										<option value="4">3.50 – 3.74</option>
+										<option value="5">3.75 – 4.00</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="cgpa" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br><br>
+					
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">MUET</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">MUET</td>
+								<td class="qtd">
+									<select id="muet_01" onchange="tot_p1()">
+										<option value="1">2</option>
+										<option value="2">3</option>
+										<option value="3">4</option>
+										<option value="4">5</option>
+										<option value="5">6</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="muet" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br><br>
+					
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Interest in course enrolled</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Interest</td>
+								<td class="qtd">
+									<select id="int_01" onchange="tot_p1()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="int" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br><br>
+					
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Participate in extra-curricular is befecial for me.</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Extra-curricular participation</td>
+								<td class="qtd">
+									<select id="xcr_01" onchange="tot_p1()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="xcr" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br>
+				<div class="center" id="totalPrimary" style="color:black;"></div>
+			</div>
+<!--------------------------------- END PRIMARY QUESTIONN ----------------------------------->
+
+
+<!--------------------------------- START SECONDARY QUESTIONN ----------------------------------->
+			<div id="secondary" class="containerTab" style="display:none;background:Grey">
+				<span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span> <br><br><br>
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Linguistic</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I like the in-class reading assignment/assessment.</td>
+								<td class="qtd">
+									<select id="lg_01" onchange="tot_lg()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">How much time do you spend in a day to read?</td>
+								<td class="qtd">
+									<select id="lg_02" onchange="tot_lg()">
+										<option value="1">I do not like to read</option>
+										<option value="2">less than 1 hour</option>
+										<option value="3">1-2 hours</option>
+										<option value="4">3-4 hours </option>
+										<option value="5">More than 4 hours</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Would you like to learn a second language?</td>
+								<td class="qtd">
+									<select id="lg_03" onchange="tot_lg()">
+										<option value="1">Not interested</option>
+										<option value="2">Not very interested</option>
+										<option value="3">Neutral</option>
+										<option value="4">Interested</option>
+										<option value="5">Very interested</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Are you practice listening/speaking outside of class?</td>
+								<td class="qtd">
+									<select id="lg_04" onchange="tot_lg()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Occasionally</option>
+										<option value="4">Frequently</option>
+										<option value="5">Always</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I like theoretical subject more than demonstrable/development subject.</td>
+								<td class="qtd">
+									<select id="lg_05" onchange="tot_lg()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="lg" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br><br>
+					
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Programming / Calculation.</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I can easily find bugs from my own program.</td>
+								<td class="qtd">
+									<select id="pc_01" onchange="tot_pc()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Occasionally</option>
+										<option value="4">Frequently</option>
+										<option value="5">Always</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I learn things quickly in calculation.</td>
+								<td class="qtd">
+									<select id="pc_02" onchange="tot_pc()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Are you lack of  interest in calculation subject?</td>
+								<td class="qtd">
+									<select  id="pc_03" onchange="tot_pc()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I try to build my own project outside of the class.</td>
+								<td class="qtd">
+									<select id="pc_04" onchange="tot_pc()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Occasionally</option>
+										<option value="4">Frequently</option>
+										<option value="5">Always</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I learn a numerous new knowledge in programming language.</td>
+								<td class="qtd">
+									<select id="pc_05" onchange="tot_pc()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Occasionally</option>
+										<option value="4">Frequently</option>
+										<option value="5">Always</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="pc" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br><br>
+					
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Problem Solving</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I can easily cope up with  problems and  avoid from being frustrated and stressed with my problems.</td>
+								<td class="qtd">
+									<select id="ps_01" onchange="tot_ps()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I try to analyze in systematic order when I face a problem.</td>
+								<td class="qtd">
+									<select id="ps_02" onchange="tot_ps()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I like to do things that I do well, and not enjoy solving new problems.</td>
+								<td class="qtd">
+									<select id="ps_03" onchange="tot_ps()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I am always hard-nosed in making a decision.</td>
+								<td class="qtd">
+									<select id="ps_04" onchange="tot_ps()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I am able to handle problems without obstacles in an effective and timely manner.</td>
+								<td class="qtd">
+									<select id="ps_05" onchange="tot_ps()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Occasionally</option>
+										<option value="4">Frequently</option>
+										<option value="5">Always</option>								
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="ps" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br><br>
+					
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Creative / Innovation</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I always do a task without emphasizing the creative element in it.</td>
+								<td class="qtd">
+									<select id="ci_01" onchange="tot_ci()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>								
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Able to organize and transform the works that required to produce given attainments.</td>
+								<td class="qtd">
+									<select id="ci_02" onchange="tot_ci()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>								
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Participate in innovation-related programs.</td>
+								<td class="qtd">
+									<select id="ci_03" onchange="tot_ci()">
+										<option value="1">Not interested</option>
+										<option value="2">Not very interested</option>
+										<option value="3">Neutral</option>
+										<option value="4">Interested</option>
+										<option value="5">Very interested</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I think creative thinking is a time-wasting situation.</td>
+								<td class="qtd">
+									<select id="ci_04" onchange="tot_ci()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>								
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I am a person who emphasizes values and makes a difference to something that I do.</td>
+								<td class="qtd">
+									<select id="ci_05" onchange="tot_ci()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>					
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="ci" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br><br>
+					
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Logical and Critical Thinking</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I know how to approach complex issues in a different way.</td>
+								<td class="qtd">
+									<select id="cl_01" onchange="tot_cl()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I am able to evaluate the  value of a new information that have a supporting details.</td>
+								<td class="qtd">
+									<select id="cl_02" onchange="tot_cl()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I have no ability to give reason for my opinions and ideas.</td>
+								<td class="qtd">
+									<select id="cl_03" onchange="tot_cl()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Occasionally</option>
+										<option value="4">Frequently</option>
+										<option value="5">Always</option>	
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I am capable to developed a more open-minded in interpreting and analyzing a point of view.</td>
+								<td class="qtd">
+									<select id="cl_04" onchange="tot_cl()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Occasionally</option>
+										<option value="4">Frequently</option>
+										<option value="5">Always</option>	
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">When I facing a problem,  I easily make a rational conclusion about how to proceed.</td>
+								<td class="qtd">
+									<select id="cl_05" onchange="tot_cl()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="cl" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table > <br><br>
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Communication Skill</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">How often do you speak at home?</td>
+								<td class="qtd">
+									<select id="cs_01" onchange="tot_cs()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Occasionally</option>
+										<option value="4">Frequently</option>
+										<option value="5">Always</option>	
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Effective communication can be achieve simply by taking turns talking.</td>
+								<td class="qtd">
+									<select id="cs_02" onchange="tot_cs()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Occasionally</option>
+										<option value="4">Frequently</option>
+										<option value="5">Always</option>	
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">When someone says something I’m not sure about, I ask for clarification.</td>
+								<td class="qtd">
+									<select id="cs_03" onchange="tot_cs()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Occasionally</option>
+										<option value="4">Frequently</option>
+										<option value="5">Always</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">When people talk to me, I try to see their perspectives.</td>
+								<td class="qtd">
+									<select id="cs_04" onchange="tot_cs()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Occasionally</option>
+										<option value="4">Frequently</option>
+										<option value="5">Always</option>	
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I am not a type of communicating person.</td>
+								<td class="qtd">
+									<select id="cs_05" onchange="tot_cs()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="cs" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table> <br><br>
+					<table class="qtable" style="width:100%">
+						<tr class="qtr">
+							<th class="qth">Design and Database</th>
+							<th class="qth">Rate</th>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I can easily understand the query language in the database.</td>
+								<td class="qtd">
+									<select id="dd_01" onchange="tot_dd()">
+										<option value="1">Never</option>
+										<option value="2">Rarely</option>
+										<option value="3">Occasionally</option>
+										<option value="4">Frequently</option>
+										<option value="5">Always</option>	
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I can easily understand the query language in the database.</td>
+								<td class="qtd">
+									<select id="dd_02" onchange="tot_dd()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">To design and develop a database is something that very complicated for me.</td>
+								<td class="qtd">
+									<select id="dd_03" onchange="tot_dd()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">Able to do data modelling.</td>
+								<td class="qtd">
+									<select id="dd_04" onchange="tot_dd()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<td class="qtd">I can imagine how something will look after it is changed or its parts have been reconfigured.</td>
+								<td class="qtd">
+									<select id="dd_05" onchange="tot_dd()">
+										<option value="1">Strongly disagree</option>
+										<option value="2">Disagree</option>
+										<option value="3">Neutral</option>
+										<option value="4">Agree</option>
+										<option value="5">Strongly agree</option>
+									</select>
+								</td>
+						</tr>
+						<tr class="qtr">
+							<th class="qth">Score</th>
+							<th class="qth"><input class="qinput" id="dd" type="text" readonly style="color: black;"></th>
+						</tr>	
+					</table>				
+			</div>
+		</div>
+	<br><br><br>
+
+  <!-- Summary -->
+  <div class="w3-container" id="summary" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Summary.</b></h1>
+    <p>This summary section will analyze students weakness and strength. Please click the button down there to see the result.</p>
+	<button onclick="Strength(); Weakness();" style="border:5px solid red" class="w3-round">Strength & Weakness</button> <br><br>
+ </div>
+
+  <div class="w3-row-padding">
+    <div class="w3-half w3-margin-bottom">
+      <ul class="w3-ul w3-light-grey">
+        <li class="w3-dark-grey w3-xlarge w3-padding-32">Strength</li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_tm"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_le"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_ss"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_att"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_cgpa"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_int"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_xcr"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_lg"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_pc"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_ps"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_ci"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_cl"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_cs"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="strength_dd"></p></li>
+      </ul>
+    </div>
+        
+    <div class="w3-half">
+      <ul class="w3-ul w3-light-grey">
+        <li class="w3-red w3-xlarge w3-padding-32">Weakness</li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_tm"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_le"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_ss"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_att"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_cgpa"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_int"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_xcr"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_lg"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_pc"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_ps"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_ci"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_cl"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_cs"></p></li>
+			<li class="w3-padding-16"><p style="color: black;" id="weakness_dd"></p></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- Predict Grade -->
+<div id="printableArea">
+  <div class="w3-container" id="pgrade" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Predict Grade.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    		<title>
+			COURSE FOR CURRENT SEMESTER
+		</title>
+		
+		<style>
+			input
+			{
+				border: 0;
+				text-align: center;
+				width: 5%;
+				color: white;
+			}
+		</style>
+
+		<table width="726" border="0" align="center">
+		
+			<tr>
+				<td width="100%">
+				  <table width="640" border="0" align="center">
+					<tr>
+					  <td colspan="2"><div align="right">HEA/PP-2020-1</div></td>
+					</tr>
+					<tr>
+					  <td width="30%"><br><div align="right"><strong><img 
+						src="../AAAS/images/uitmresult.png" width="50" valign="middle"/><br><br></strong></div></td>
+					  <td width="60%" valign="middle"><strong>UNIVERSITI TEKNOLOGI MARA</strong></td>
+					</tr>
+					<tr>
+					  <td colspan="2"><div align="center">BAHAGIAN HAL EHWAL AKADEMIK<br/></div></td>
+					</tr>
+				  </table>
+				</td>
+			</tr>
+			
+			<table align="center"> 
+				<td>
+					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#6699FF">
+						<tr> 
+							<td width="100%">
+								<table width="100%" border=0 align="center" cellpadding=2 cellspacing=0>
+									<tbody>
+										<tr> 
+											<td nowrap>
+												<div align="center">
+													<button onclick="printPageArea('printableArea')">Print Predict Grade</button>
+                                                    <button onclick="predict()">Predict Grade</button>
+													
+												</div><br>
+
+												
+												<tr>
+													<td>
+														<table cellspacing="0" cellpadding="0" width="100%">
+															<tbody>
+																<tr>
+																	<td>
+																		<table cellspacing="0" cellpadding="0" width="100%" border="0">
+																			<tbody>
+																				<tr>
+																					<td>
+																						<table style="BORDER-COLLAPSE: collapse" bordercolor="#cccccc" height="100%" cellspacing="0" cellpadding="0" width="100%" border="1">
+																							<tbody>
+																								<tr>
+																									<td height="24"><div align="center"><strong> ACADEMIC ADVISORY AID SYSTEM </strong></div></td>
+																								</tr>
+																								<tr>
+																									<td>
+																										<table style="BORDER-COLLAPSE: collapse" bordercolor="#cccccc" height="100%" cellspacing="0" cellpadding="2" width="100%" border="1">
+																											<tr style="color: white;">
+																												<td width="79%" valign="top">
+																													<table style="BORDER-COLLAPSE: collapse" bordercolor="#cccccc"  cellspacing="0"  cellpadding="2" width="100%" border="1">
+																													  <tr>
+																														<td width="17%" ><div align="right">Student ID : </div></td>
+																														<td width="62%"><p id="stu_id"></td> 
+																													  </tr>
+																													  <tr>
+																														<td ><div align="right">Name : </div></td>
+																														<td><p id="stu_name"></td>
+																													  </tr>
+																													</table>
+																												</td>
+																											</tr>
+
+																											<tr>
+																												<td valign="top">
+																													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																														<tr style="color: white;">
+																															<td>
+																																<table style="BORDER-COLLAPSE: collapse" bordercolor="#cccccc" height="100%" cellspacing="0" cellpadding="2" width="100%" border="1">
+																																	<tr style="color: white;">
+																																		<td width="22%" valign="top"><div align="right">Campus : </div></td>
+																																		<td colspan="3" valign="top">B - UiTM Shah Alam</td>
+																																	</tr>
+																																
+																																	<tr style="color: white;">
+																																		<td valign="top"><div align="right">Course :</div></td>
+																																		<td width="29%" valign="top">CSC259</td>
+																																		<td width="16%" valign="top"><div align="right">Part :</div></td>
+																																		<td width="33%" valign="top">3</td>
+																																	</tr>
+																																</table>
+																															</td>
+																														</tr>
+																													</table>
+																												</td>
+																											</tr>
+																										</table>
+																									</td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+									</td>
+								</tr>
+									
+										
+										<tr> 
+											<td nowrap>
+												<table width="100%" border="0" align="center" cellpadding="2" cellspacing="0" bordercolor="#999999">
+													<tr> 
+														<td  width="300%">
+															<table style="BORDER-COLLAPSE: collapse" bordercolor="#999999" height="100%" cellspacing="0" cellpadding="2" width="100%" border="1">
+																<tr>
+																	<td width="5%" bgcolor="#E9E9E9" align="center">No</td>
+																	<td width="10%" bgcolor="#E9E9E9" align="center">Course Code</td>
+																	<td width="35%" bgcolor="#E9E9E9" align="center">Course Name</td>
+																	<td width="5%" bgcolor="#E9E9E9" align="center">Credit Hour</td>
+																	<td width="5%" bgcolor="#E9E9E9" align="center">Predict Grade</td>
+																</tr>
+																<tr>
+																	<td><div align="center">1</div></td>
+																	<td><div align="center">ISP500</div></td>
+																	<td><div>FOUNDATION OF INFORMATION SYSTEMS</div></td>
+																	<td><div align="center">3.00</div></td>
+																	<td><div align="center"><p id="gradeisp500"></p></div></td>
+																</tr>
+																<tr>
+																	<td><div align="center">2</div></td>
+																	<td><div align="center">ISP542</div></td>
+																	<td><div>FUNDAMENTALS OF ARTIFICIAL INTELLIGENCE</div></td>
+																	<td><div align="center">3.00</div></td>
+																	<td><div align="center"><p id="gradeisp542"></p></div></td>
+																</tr>
+																<tr>
+																	<td><div align="center">3</div></td>
+																	<td><div align="center">ISP543</div></td>
+																	<td><div>KNOWLEDGE BASED SYSTEMS</div></td>
+																	<td><div align="center">3.00</div></td>
+																	<td><div align="center"><p id="gradeisp543"></p></div></td>
+																</tr>
+																<tr>
+																	<td><div align="center">4</div></td>
+																	<td><div align="center">ICT501</div></td>
+																	<td><div>DATABASE MANAGEMENT SYSTEMS</div></td>
+																	<td><div align="center">3.00</div></td>
+																	<td><div align="center"><p id="gradeict501"></p></div></td>
+																</tr>
+																<tr>
+																	<td><div align="center">5</div></td>
+																	<td><div align="center">ELC501</div></td>
+																	<td><div>ENGLISH FOR CRITICAL ACADEMIC READING</div></td>
+																	<td><div align="center">2.00</div></td>
+																	<td><div align="center"><p id="gradeelc501"></p></div></td>
+																</tr>
+																<tr>
+																	<td><div align="center">6</div></td>
+																	<td><div align="center">CTU552</div></td>
+																	<td><div>PHILOSOPHY AND CURRENT ISSUES	</div></td>
+																	<td><div align="center">2.00</div></td>
+																	<td><div align="center"><p id="gradectu552"></p></div></td>
+																</tr>
+																<tr>
+																	<td><div align="center">7</div></td>
+																	<td><div align="center">Third Language</div></td>
+																	<td><div>INTRODUCTORY THIRD LANGUAGE (LEVEL I)</div></td>
+																	<td><div align="center">2.00</div></td>
+																	<td><div align="center"><p id="grade3rdl"></p></div></td>
+																</tr>
+                                                                
+                                                                 <tr>
+                                                                    <td colspan=5><div align="center"><p id="totalfgpa"></div></td>
+                                                                </tr>
+															</table>
+                                                             
+														</td>
+													</tr>
+
+													<tr> 
+														<td>
+															<table width="100%" border="0">
+																<tr>
+																	<td width="100%"><font color="#FF0000">1.	This information displayed is for VIEW ONLY. <br/> 2. 	The official Examination Registration Slip can only be printed starting from the date specified in the University Academic Calendar.</font></td>
+																</tr>  
+																<!--- cuba try test ---->
+																<div hidden>
+																test test score gpa:<div><p id="gpaisp500"><p id="gpaisp542"><p id="gpaisp543"><p id="gpaict501"><p id="gpactu552"><p id="gpaelc501"><p id="gpa3rdl"><div>
+																<div>
+																
+															</table>
+														</td>
+													</tr>
+                     
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+  </div>
+ </div>
+  
+<!-- Expert Advice -->
+	<div class="w3-container" id="expadvice" style="margin-top:75px">
+		<h1 class="w3-xxxlarge w3-text-red"><b>Expert Advice.</b></h1>
+		<p>Please click the button advice down there to get the advice. Note that, only those who get lower grade yang kena bebel.</p>
+		<button style="border:5px solid red" class="w3-round" onclick="Advice()" align="center">Advice</button> <br><br>
+	</div>
+
+  <div class="w3-row-padding">
+    <div class="w3-half w3-margin-bottom">
+      <ul class="w3-ul w3-light-grey">
+        <li class="w3-dark-grey w3-xlarge w3-padding-32">Primary Factor</li>
+        <li class="w3-padding-16"><p style="color: black;" id="tot_tm"></p></li>
+        <li class="w3-padding-16"><p style="color: black;" id="tot_leAd"></p></li>
+        <li class="w3-padding-16"><p style="color: black;" id="tot_ssAd"></p></li>
+        <li class="w3-padding-16"><p style="color: black;" id="tot_attAd"></p></li>
+        <li class="w3-padding-16"><p style="color: black;" id="tot_intAd"></p></li>
+		<li class="w3-padding-16"><p style="color: black;" id="tot_xcrAd"></p></li>
+        </li>
+      </ul>
+    </div>
+        
+    <div class="w3-half">
+      <ul class="w3-ul w3-light-grey">
+        <li class="w3-red w3-xlarge w3-padding-32">Secondary Factor</li>
+        <li class="w3-padding-16"><p style="color: black;" id="tot_lgAd"></p></li>
+        <li class="w3-padding-16"><p style="color: black;" id="tot_pcAd"></p></li>
+        <li class="w3-padding-16"><p style="color: black;" id="tot_ciAd"></p></li>
+        <li class="w3-padding-16"><p style="color: black;" id="tot_csAd"></p></li>
+        <li class="w3-padding-16"><p style="color: black;" id="tot_clAd"></p></li>
+		<li class="w3-padding-16"><p style="color: black;" id="tot_ddAd"></p></li>
+        </li>
+      </ul>
+    </div>
+  </div>
+  	<div class="w3-full">
+      <ul class="w3-ul w3-light-grey">
+		<li class="w3-grey w3-xlarge w3-padding-25">CGPA</li>
+		<li class="w3-padding"><p style="color: black;" id="cgpaAd"></p></li>
+      </ul>
+    </div>
+
+<!-- End page content -->
+</div>
+
+<div class="w3-black w3-container w3-padding-32" style="margin-top:75px;padding-right:58px; color: black;"><p class="w3-right">Copyright &copy; Universiti Teknologi MARA (UiTM) Shah Alam | Powered by <a style="color: grey;">CS2593E</a></p></div>
+
+
+</body>
+</html>
