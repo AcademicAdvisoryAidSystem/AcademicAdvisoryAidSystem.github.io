@@ -1421,8 +1421,8 @@ function printPageArea(areaID){
     WinPrint.close();
 }
 
-function printDiv(printableArea) {
-     var printContents = document.getElementById(printableArea).innerHTML;
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
      var originalContents = document.body.innerHTML;
 
      document.body.innerHTML = printContents;
