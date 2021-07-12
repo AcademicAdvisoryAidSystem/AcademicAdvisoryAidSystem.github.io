@@ -277,9 +277,7 @@ html{
     align-items: center;
 }
 
-.row1{
-    height: 92%;
-}
+
 
 .row2{
     height: auto;
@@ -329,7 +327,7 @@ button{
     background-size: cover;
 }
 
-h3{
+.nama{
     color: #DF9881;
    font-size: 18px;
 }
