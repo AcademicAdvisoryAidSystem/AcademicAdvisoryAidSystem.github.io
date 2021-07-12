@@ -270,3 +270,95 @@ html{
 .imageBox:hover .hoverImg {
   display: block;
 }
+
+.row{
+    display: flex;
+   
+    align-items: center;
+}
+
+.row1{
+    height: 92%;
+}
+
+.row2{
+    height: auto;
+}
+
+.row3{
+    height: auto;
+}
+
+button{
+    width: 180px;
+    color: #DF9881;
+    font-size: 12px;
+    padding: 12px 0;
+    background: #fff;
+    border: 0;
+    border-radius: 20px;
+    outline:none;
+    margin-top: 5px;
+}
+
+.card{
+    width: 150px;
+    height:190px;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: -10px 30px;
+    background-position: center;
+    background-size: cover;
+    clip-path: circle();
+    
+}
+
+.namer{  
+    width: 150px;
+    height:210px;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 15px 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: -30px 33px;
+    background-position: center;
+    background-size: cover;
+}
+
+h3{
+    color: #DF9881;
+   font-size: 18px;
+}
+p{
+    font-size: 16px
+}
+
+
+.card1{
+    
+    background-image: url(images/paansem.jpg);
+    
+}
+
+.card2{
+    background-image: url(images/syaqi.jpeg);
+    
+}
+
+.card3{
+    background-image: url(images/hasanah.jpg);
+}
+
+.card4{
+    background-image: url(images/akmal.jpg);
+     
+}
+
+.card5{
+    background-image: url(images/hariz.jpeg);
+     
+}
