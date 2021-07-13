@@ -317,7 +317,6 @@ button{
 .namer{  
     width: 150px;
     height:210px;
-    display: inline-block;
     border-radius: 5px;
     padding: 15px 10px;
     box-sizing: border-box;
