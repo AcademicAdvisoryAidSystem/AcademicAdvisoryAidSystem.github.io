@@ -581,8 +581,8 @@ function predict()
 {
     let x=18;
     
-    var score_isp500= tot_cs() + tot_cl() +tot_lg() + tot_ps() + tot_dd() ;
-    var score=[(score_isp500 + tot_p1())/250]*100;
+    var score_isp500= tot_cs() + tot_cl() + tot_ps()  ;
+    var score=[(score_isp500 + tot_p1())/200]*100;
     
         if(score <=100 && score >89)
 			{
@@ -683,7 +683,7 @@ function predict()
 
 
     
-    var score_isp542= tot_ci() + tot_cl() +tot_lg() + tot_ps() + tot_dd() ;
+    var score_isp542= tot_ci() + tot_cl() +tot_lg() + tot_ps() + tot_pc() ;
     var scoreb=[(score_isp542 + tot_p1())/250]*100;
     
      if(scoreb <=100 && scoreb >89)
@@ -782,8 +782,8 @@ function predict()
     
 //////ISP543 STARTS
 
-    var score_isp543= tot_ci() + tot_cl() +tot_lg() + tot_ps() + tot_pc() ;
-    var scorec=[(score_isp543 + tot_p1())/250]*100;
+    var score_isp543= tot_ci() + tot_cl() +tot_lg() + tot_ps() + tot_pc() + tot_cs() + tot_dd();
+    var scorec=[(score_isp543 + tot_p1())/300]*100;
     
      if(scorec <=100 && scorec >89)
 			{
@@ -883,7 +883,7 @@ function predict()
 // ICT501 STARTS
     
 
-    var score_ict501= tot_pc() + tot_lg() + tot_ps() + tot_dd() ;
+    var score_ict501= tot_pc() + tot_cl() + tot_ps() + tot_dd() ;
     var scored=[(score_ict501 + tot_p1())/225]*100;
 
     if(scored <=100 && scored >89)
@@ -984,8 +984,8 @@ function predict()
     
 
     
-    var score_ctu552= tot_cl() + tot_cs() +tot_lg() + tot_ps() ;
-    var scoree=[(score_ctu552 + tot_p1())/225]*100;
+    var score_ctu552= tot_cl() +tot_lg()  ;
+    var scoree=[(score_ctu552 + tot_p1())/175]*100;
 
     
     if(scoree <=100 && scoree >89)
@@ -1085,8 +1085,8 @@ function predict()
 // ELC501 STARTS HERE
 
 
-    var score_elc501= tot_cl() + tot_cs() +tot_lg() + tot_ps() ;
-    var scoref=[(score_elc501 + tot_p1())/225]*100;
+    var score_elc501= tot_cl() + tot_cs() +tot_lg() ;
+    var scoref=[(score_elc501 + tot_p1())/200]*100;
     
     if(scoref <=100 && scoref >89)
 			{
@@ -1185,8 +1185,8 @@ function predict()
 //3RDL STARTS HERE
 
 
-    var score_3rdl= tot_cs() + tot_cl() + tot_lg() + tot_ci() ;
-    var fscore3rd=[(score_3rdl + tot_p1())/225]*100;
+    var score_3rdl= tot_cs() + tot_lg() ;
+    var fscore3rd=[(score_3rdl + tot_p1())/175]*100;
     
     
 	if(fscore3rd <=100 && fscore3rd >89)
